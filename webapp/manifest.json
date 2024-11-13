@@ -1,0 +1,145 @@
+{
+  "_version": "1.37.0",
+  "sap.app": {
+    "id": "student10.com.sap.training.ux402.fullscreen.ux402fullscreen",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.15.4",
+      "toolsId": "70cdbd4d-ecbb-406b-bb0e-0e7e6bfabbb4"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/UX_TRAVEL_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": ["UX_TRAVEL_ANNO_MDL"],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "UX_TRAVEL_ANNO_MDL": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='UX_TRAVEL_ANNO_MDL',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/UX_TRAVEL_ANNO_MDL.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.96.33",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "student10.com.sap.training.ux402.fullscreen.ux402fullscreen.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "student10.com.sap.training.ux402.fullscreen.ux402fullscreen.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false,
+        "transition": "slide",
+        "bypassed": {
+          "target": ["notFound"]
+        }
+      },
+      "routes": [
+        {
+          "name": "overview",
+          "pattern": "",
+          "titleTarget": "",
+          "greedy": false,
+          "target": ["overview"]
+        },
+        {
+          "name": "flights",
+          "pattern": "carriers/{carrid}",
+          "titleTarget": "",
+          "greedy": false,
+          "target": ["flights"]
+        }
+      ],
+      "targets": {
+        "overview": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Carrier",
+          "viewName": "Carrier",
+          "viewLevel": 1
+        },
+        "flights": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Flights",
+          "viewName": "Flights",
+          "viewLevel": 2
+        },
+        "notFound": {
+          "viewId": "NotFound",
+          "viewName": "NotFound",
+          "transition": "show"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "student10.com.sap.training.ux402.fullscreen.ux402fullscreen.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}
