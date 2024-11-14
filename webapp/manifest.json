@@ -56,7 +56,8 @@
       "minUI5Version": "1.96.33",
       "libs": {
         "sap.m": {},
-        "sap.ui.core": {}
+        "sap.ui.core": {},
+        "student10.com.sap.training.ux402.controls" : {}
       }
     },
     "contentDensities": {

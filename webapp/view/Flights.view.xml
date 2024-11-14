@@ -4,6 +4,7 @@
     displayBlock="true"
     xmlns="sap.m"
     xmlns:l="sap.ui.layout"
+    xmlns:cust="student10.com.sap.training.ux402.controls"
 >
     <Page
         id="idFlightsPage"
@@ -87,6 +88,28 @@
                             text="{i18n>seatocc}"
                         />
                     </Column>
+                    <Column
+                        id="column6"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                        hAlign="Center"
+                    >
+                        <Text
+                            id="text9"
+                            text="{i18n>planeInfo}"
+                        />
+                    </Column>
+                    <Column
+                        id="column5"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                        hAlign="Center"
+                    >
+                        <Text
+                            id="text8"
+                            text="{i18n>bookaction}"
+                        />
+                    </Column>
                 </columns>
                 <items>
                     <ColumnListItem id="columnListItem1">
@@ -107,6 +130,18 @@
                             <Text
                                 id="text7"
                                 text="{Seatsocc}"
+                            />
+                            <cust:PlaneInfo
+                                id="planeInfo1"
+                                seatsMax="{Seatsmax}"
+                                seatsOcc="{Seatsocc}"
+                            />
+                            <cust:HoverButton
+                                id="hoverButton1"
+                                text="{i18n>bookaction}"
+                                allowHover="true"
+                                hoverText="{=${Seatsmax} - ${Seatsocc}}"
+                                hover="onHover"
                             />
                         </cells>
                     </ColumnListItem>
