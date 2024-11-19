@@ -5,6 +5,7 @@
     xmlns="sap.m"
     xmlns:l="sap.ui.layout"
     xmlns:cust="student10.com.sap.training.ux402.controls"
+    xmlns:core="sap.ui.core"
 >
     <Page
         id="idFlightsPage"
@@ -142,7 +143,23 @@
                                 allowHover="true"
                                 hoverText="{=${Seatsmax} - ${Seatsocc}}"
                                 hover="onHover"
-                            />
+                                press="onHoverPress"
+                            >
+                                <cust:customData>
+                                    <core:CustomData
+                                        key="id"
+                                        value="{Carrid}"
+                                    />
+                                    <core:CustomData
+                                        key="date"
+                                        value="{path: 'Fldate', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'yyyy-MM-dd\'T\'HH:mm:ss', UTC: true }}"
+                                    />
+                                    <core:CustomData
+                                        key="connid"
+                                        value="{Connid}"
+                                    />
+                                </cust:customData>
+                            </cust:HoverButton>
                         </cells>
                     </ColumnListItem>
                 </items>
